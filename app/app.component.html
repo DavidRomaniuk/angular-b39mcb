@@ -1,0 +1,30 @@
+<hello name="{{ name }}"></hello>
+<h6>Complex form with address component</h6>
+<form #goodForm="ngForm">
+  <div>
+    <label>Firstname:</label>
+    <input type="text" name="firstName" ngModel>
+  </div>
+  <!-- good case -->
+  <div ngModelGroup="good-address">
+    <address></address>
+  </div>  
+</form>
+<pre>{{ goodForm.value | json }}</pre>
+
+<form #badform="ngForm">
+  <div>
+    <label>Firstname:</label>
+    <input type="text" name="firstName" ngModel>
+  </div>
+<!-- error case -->
+<div ngModelGroup="good-address">
+  <ng-template [ngTemplateOutlet]="switch"></ng-template>
+</div>
+</form>
+<pre>{{ badform.value | json }}</pre>
+
+<div #switch>
+  <!--<address></address> -->
+</div>
+
